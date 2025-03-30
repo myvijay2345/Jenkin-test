@@ -1,0 +1,3 @@
+jenkin{
+  agent any
+}
