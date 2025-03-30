@@ -1,3 +1,11 @@
-jenkin{
-  agent any
+pipeline {
+    agent any
+
+    stages {
+        stage('Hello') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+    }
 }
