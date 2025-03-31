@@ -2,9 +2,14 @@ pipeline {
     agent any
 
     stages {
-        stage('Hello') {
+        stage('Terraform checkout') {
             steps {
-                echo 'Hello World'
+                checkout scm
+            }
+        }
+        stage('terrroform init'){
+            steps{
+                script{sh 'terrform init'
             }
         }
     }
