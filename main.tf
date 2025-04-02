@@ -29,3 +29,10 @@ module "prod_ic_vpc1" {
 
     }]
 }
+
+terraform {
+  backend "gcs" {
+    bucket = "prj-core-project-448210"
+    prefix = "terraform-eu-state/tf-state"
+  }
+}
