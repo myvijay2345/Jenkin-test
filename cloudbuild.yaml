@@ -1,0 +1,19 @@
+steps:
+  # Step 1: Set up the environment
+  - name: 'hashicorp/terraform:latest'
+    args:
+      - '--version'
+
+  # Step 2: Initialize Terraform
+  - name: 'hashicorp/terraform:latest'
+    args: ['init', '-reconfigure', '-backend-config', 'bucket=projectone_bucket']
+
+  # Step 3: Plan Terraform changes
+  - name: 'hashicorp/terraform:latest'
+    args:
+    - 'plan'
+# Timeout for the build
+timeout: '1200s'  # Adjust as necessary
+
+options:
+  defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET
