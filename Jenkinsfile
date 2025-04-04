@@ -23,7 +23,7 @@ stages
      withCredentials([
         file(credentialsId: 'GCP-KEY1', variable: 'GC_KEY')
                 ]) 
-          //          {
+                   {
     sh 'gcloud auth activate-service-account --key-file=/bin/key.json'
     // Your gcloud commands here
   }               
