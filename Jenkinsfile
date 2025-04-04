@@ -21,7 +21,7 @@ stages
     // Write the secret to a file
     //writeFile file: serviceAccountKeyFile, text: GCP_SERVICE_ACCOUNT
      withCredentials([
-          file(credentialsId: 'GCP-KEY', variable: 'GC_KEY')
+          file(credentialsId: 'GCP-KEY1', variable: 'GC_KEY')
                     ]) 
                     {
     sh "gcloud auth activate-service-account --key-file=${GC_KEY}"
