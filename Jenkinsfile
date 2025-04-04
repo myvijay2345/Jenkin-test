@@ -17,7 +17,7 @@ stages
     // Authenticate with Google Cloud
     sh 'gcloud auth activate-service-account --key-file=$GCP_SERVICE_ACCOUNT'
     // Clone the repository
-    sh "gcloud source repos clone --project=$GCP_PROJECT_ID"
+    sh "gcloud source repos clone --project= GCP_PROJECT_ID"
          }
         }
 }   
