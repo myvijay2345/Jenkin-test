@@ -1,6 +1,11 @@
 pipeline {
     agent any
 
+    environment {
+        // Access the Codespace secret as an environment variable
+        GOOGLE_SERVICE_ACCOUNT_KEY = credentials('GOOGLE_SERVICE_ACCOUNT_KEY')
+    }
+
     stages {
         stage('Checkout Code') {
             steps {
@@ -14,8 +19,10 @@ pipeline {
                 script {
                     // Create a temporary file to store the service account key
                     def serviceAccountKeyFile = 'service-account-key.json'
-                    writeFile file: serviceAccountKeyFile, text: "${env.GOOGLE_SERVICE_ACCOUNT_KEY}"
-
+                    
+                    // Write the secret to a file
+                    writeFile file: serviceAccountKeyFile, text: GOOGLE_SERVICE_ACCOUNT_KEY
+                    
                     // Authenticate with Google Cloud using the service account key
                     sh "gcloud auth activate-service-account --key-file=${serviceAccountKeyFile}"
                 }

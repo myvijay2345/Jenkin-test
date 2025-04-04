@@ -14,8 +14,17 @@ stages
  {
   steps {
    script {
+
+    // Create a temporary file to store the service account key
+        def serviceAccountKeyFile = 'service-account-key.json'
+                 
+    // Write the secret to a file
+        writeFile file: serviceAccountKeyFile, text: GCP_SERVICE_ACCOUNT
+                    
+    // Authenticate with Google Cloud using the service account key
+        sh "gcloud auth activate-service-account --key-file=${serviceAccountKeyFile}"
     // Authenticate with Google Cloud
-    sh 'gcloud auth activate-service-account --key-file=${GCP_SERVICE_ACCOUNT}'
+   // sh 'gcloud auth activate-service-account --key-file=${GCP_SERVICE_ACCOUNT}'
     // Clone the repository
     sh "gcloud source repos clone --project= GCP_PROJECT_ID"
          }
