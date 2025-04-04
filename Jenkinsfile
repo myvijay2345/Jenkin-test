@@ -1,6 +1,5 @@
 pipeline {
-agent 
-{label 'google-cloud'}
+agent {label 'google-cloud'}
 
 environment {
 GCP_PROJECT_ID = 'core-project-448210' // Replace with your GCP project ID
