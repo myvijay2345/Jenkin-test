@@ -22,7 +22,7 @@ stages
        // writeFile file: serviceAccountKeyFile, text: GCP_SERVICE_ACCOUNT
                     
     // Authenticate with Google Cloud using the service account key
-        sh "gcloud auth activate-service-account --key-file=${GCP_SERVICE_ACCO}"
+        sh "gcloud auth activate-service-account --key-file=${GCP_SERVICE_ACCOUNT}"
     // Authenticate with Google Cloud
    // sh 'gcloud auth activate-service-account --key-file=$(GCP_SERVICE_ACCOUNT}'
     // Clone the repository
