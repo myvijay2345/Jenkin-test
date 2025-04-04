@@ -24,7 +24,7 @@ stages
         file(credentialsId: 'GCP-KEY1', variable: 'GC_KEY')
                 ]) 
                    {
-    sh 'gcloud auth activate-service-account --key-file=/bin/key.json'
+    sh 'gcloud auth activate-service-account --key-file=${GC_KEY}'
     // Your gcloud commands here
   }               
     // Authenticate with Google Cloud using the service account key
