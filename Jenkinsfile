@@ -30,7 +30,6 @@ stages
          }
         }
 }   
-abc
 stage('Push to GitHub') 
 {
     steps {
