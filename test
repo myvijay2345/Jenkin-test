@@ -1,0 +1,42 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout Code') {
+            steps {
+                // Checkout your code from the repository
+                checkout scm
+            }
+        }
+
+        stage('Authenticate with Google Cloud') {
+            steps {
+                script {
+                    // Create a temporary file to store the service account key
+                    def serviceAccountKeyFile = 'service-account-key.json'
+                    writeFile file: serviceAccountKeyFile, text: "${env.GOOGLE_SERVICE_ACCOUNT_KEY}"
+
+                    // Authenticate with Google Cloud using the service account key
+                    sh "gcloud auth activate-service-account --key-file=${serviceAccountKeyFile}"
+                }
+            }
+        }
+
+        stage('Run gcloud Command') {
+            steps {
+                script {
+                    // Example gcloud command: list all projects
+                    sh "gcloud projects list"
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            // Clean up the temporary service account key file
+            sh "rm -f service-account-key.json"
+            echo 'Cleaning up...'
+        }
+    }
+}
