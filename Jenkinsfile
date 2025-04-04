@@ -5,7 +5,7 @@ environment {
 GCP_PROJECT_ID = 'core-project-448210' // Replace with your GCP project ID
 REPO_NAME = 'myinfra' // Replace with your repo name
 GITHUB_REPO = 'https://github.com/myvijay2345/Jenkin-test/edit/main/Jenkinsfile' // Replace with your GitHub repo URL
-GCP_SERVICE_ACCOUNT = credentials('GCP-KEY') // Path to your GCP service account key
+//GCP_SERVICE_ACCOUNT = credentials('GCP-KEY') // Path to your GCP service account key
 }
 
 stages 
