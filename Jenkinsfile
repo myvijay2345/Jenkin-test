@@ -1,5 +1,5 @@
 pipeline {
-agent {'any'}
+agent any
 
 environment {
 GCP_PROJECT_ID = 'core-project-448210' // Replace with your GCP project ID
