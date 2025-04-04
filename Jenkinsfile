@@ -19,10 +19,16 @@ stages
      //  def serviceAccountKeyFile = 'service-account-key.json'
                  
     // Write the secret to a file
-       //writeFile file: serviceAccountKeyFile, text: GCP_SERVICE_ACCOUNT
-                    
+    //writeFile file: serviceAccountKeyFile, text: GCP_SERVICE_ACCOUNT
+     withCredentials([
+          file(credentialsId: 'GCP-KEY', variable: 'GC_KEY')
+                    ]) 
+                    {
+    sh "gcloud auth activate-service-account --key-file=${GC_KEY}"
+    // Your gcloud commands here
+}               
     // Authenticate with Google Cloud using the service account key
-        sh "gcloud auth activate-service-account --key-file=${GCP_SERVICE_ACCOUNT}"
+      //  sh "gcloud auth activate-service-account --key-file=${GCP_SERVICE_ACCOUNT}"
     // Authenticate with Google Cloud
    // sh 'gcloud auth activate-service-account --key-file=$(GCP_SERVICE_ACCOUNT}'
     // Clone the repository
