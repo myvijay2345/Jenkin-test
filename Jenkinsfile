@@ -8,30 +8,33 @@ GITHUB_REPO = 'https://github.com/myvijay2345/Jenkin-test/edit/main/Jenkinsfile'
 GCP_SERVICE_ACCOUNT = '$GCP_CORE_KEY_JENKINS' // Path to your GCP service account key
 }
 
-stages {
-stage('Clone Google Cloud Source Repository') {
-steps {
-script {
-// Authenticate with Google Cloud
-sh 'gcloud auth activate-service-account --key-file=$GCP_SERVICE_ACCOUNT'
-// Clone the repository
-sh "gcloud source repos clone --project=$GCP_PROJECT_ID"
-}
-}
-}
+stages 
+{
+ stage('Clone Google Cloud Source Repository') 
+ {
+  steps {
+   script {
+    // Authenticate with Google Cloud
+    sh 'gcloud auth activate-service-account --key-file=$GCP_SERVICE_ACCOUNT'
+    // Clone the repository
+    sh "gcloud source repos clone --project=$GCP_PROJECT_ID"
+         }
+        }
+}   
 
-stage('Push to GitHub') {
-steps {
-script {
-// Navigate to the cloned repository
-dir(REPO_NAME) {
-// Add GitHub remote
-sh "git remote add github "
-// Push to GitHub
-sh 'git push github main' // Change 'main' to your branch if necessary
-}
-}
-}
-}
+stage('Push to GitHub') 
+{
+    steps {
+    script {
+    // Navigate to the cloned repository
+    dir(REPO_NAME) {
+    // Add GitHub remote
+    sh "git remote add github "
+    // Push to GitHub
+    sh 'git push github main' // Change 'main' to your branch if necessary
+                    }
+            }              
+        }
+ }
 }
 }
