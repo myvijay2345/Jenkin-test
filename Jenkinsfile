@@ -19,7 +19,7 @@ stages
      //  def serviceAccountKeyFile = 'service-account-key.json'
                  
     // Write the secret to a file
-    writeFile file: serviceAccountKeyFile, text: GCP_SERVICE_ACCOUNT
+   // writeFile file: serviceAccountKeyFile, text: GCP_SERVICE_ACCOUNT
      withCredentials([
         file(credentialsId: 'GCP-KEY1', variable: 'GC_KEY')
                 ]) 
